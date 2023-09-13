@@ -7,8 +7,8 @@
 </head>
 <body>
     <h1>Create Account</h1>
-    {%if messages%}
-        The username already exists
+    {%if error%}
+        {{error}}
     {%endif%}
     <form method="post" action="/authenticate_register/">
         {% csrf_token %}

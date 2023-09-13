@@ -8,6 +8,9 @@
 <body>
     <form method="post" action ='/authenticate_login/'>
         {% csrf_token %}
+        {%if error%}
+            {{error}}
+        {%endif%}
         <div>
             Username: <input type="text" name = "username">
         </div>

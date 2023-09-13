@@ -7,9 +7,16 @@
 </head>
 <body>
     <div>
-        <h3>Profile</h3>
-        <h3>Home</h3>
-        <a href = '/log'><h3>Login</h3></a>
+
+        {%if user.is_authenticated%}
+            <h3>Profile</h3>
+            <h3>Home</h3>
+            <a href = '/logout'><h3>Logout</h3></a>
+        {%else%}
+            <h3>Profile</h3>
+            <h3>Home</h3>
+            <a href = '/log'><h3>Login</h3></a> 
+        {%endif%}
     </div>
 </body>
 </html>
