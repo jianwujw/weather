@@ -5,10 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+        background-color: #102124;
+        color :white;
+        
+    }
+    #container_div{
+        background-color:rgba(255, 255, 255, 0.6);
+        padding:2vh;
+        position:absolute;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        width:80vw;
+        left:10vw;
+        row-gap: 2vh;
+        column-gap: 2vh;
+        margin-top: 2vh;
+        align-items: center;
+        padding-top: 5vh;
+        
+
+    }
+    .city_weather{
+        display:inline-block;
+
+    }
+    .line-break {
+        width: 100%;
+    }
+
+    #title_div{
+        position: absolute;
+        top: 0vh
+    }
+
+</style>
 <body>
-    {%include 'navbar.html'%}
-    <div>
-        <h2>Today's Weather</h2>
+    <div id="container_div">
+        <div id="title_div">
+            <h2>Today's Weather in LA TIME ZONE (PST)</h2>    
+        </div>        
+        <div class =line-break></div>
+        {%for key,value in dictionary.items%}
+        <div class="city_weather">
+        <b>{{key}}</b>
+            {%for weather in value.weather_conditions%}
+            
+            <img src="http://openweathermap.org/img/wn/{{weather.icon}}.png">
+
+            {%endfor%}
+        <br>
+
+        Country: {{value.sys_country}} 
+        <br>
+        Temperature NOW: {{value.main_temp}} F
+        <br>
+        Low: {{value.main_temp_min}} F
+        <br>
+        High: {{value.main_temp_max}} F
+        <br>
+        Sunrise: {{value.sys_sunrise}} PST
+        <br>
+        Sunset: {{value.sys_sunset}} PST
+        </div>
+        {%endfor%}
     </div>
 </body>
 </html>
